@@ -1,0 +1,96 @@
+{
+  "root": true,
+  "env": {
+      "es6": true
+  },
+  "parserOptions": {
+      "ecmaVersion": 2018
+  },
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+      {
+          "files": ["*.ts"],
+          "parserOptions": {
+              "project": ["tsconfig.json"],
+              "createDefaultProgram": true
+          },
+
+          "plugins": ["unused-imports"],
+          "rules": {
+              "@angular-eslint/component-selector": [
+                  "warn",
+                  {
+                      "type": "element",
+                      "prefix": "",
+                      "style": "kebab-case"
+                  }
+              ],
+              "@angular-eslint/directive-selector": [
+                  "warn",
+                  {
+                      "type": "attribute",
+                      "prefix": "",
+                      "style": "camelCase"
+                  }
+              ],
+              "@typescript-eslint/naming-convention": [
+                  "warn",
+                  {
+                      "selector": "default",
+                      "format": [
+                          "camelCase",
+                          "strictCamelCase",
+                          "PascalCase",
+                          "StrictPascalCase",
+                          "snake_case",
+                          "UPPER_CASE"
+                      ],
+                      "leadingUnderscore": "allow",
+                      "trailingUnderscore": "allow"
+                  }
+              ],
+              "@typescript-eslint/dot-notation": "off",
+              "@typescript-eslint/explicit-member-accessibility": [
+                  "off",
+                  {
+                      "accessibility": "explicit"
+                  }
+              ],
+              "@typescript-eslint/no-inferrable-types": "off",
+              "@typescript-eslint/no-unused-vars": "off",
+              "unused-imports/no-unused-imports": "warn",
+              "unused-imports/no-unused-vars": [
+                  "warn",
+                  {
+                      "vars": "all",
+                      "args": "none",
+                      "ignoreRestSiblings": true
+                  }
+              ],
+              "arrow-parens": [
+                  "warn",
+                  "as-needed",
+                  { "requireForBlockBody": true }
+              ],
+              "brace-style": ["off", "off"],
+              "import/order": "off",
+              "max-len": [
+                  "warn",
+                  {
+                      "ignorePattern": "^import |^export | implements",
+                      "code": 180
+                  }
+              ],
+              "no-underscore-dangle": "off",
+              "object-shorthand": "off",
+              "quote-props": ["warn", "consistent"],
+              "quotes": ["warn", "single"]
+          }
+      },
+      {
+          "files": ["*.html"],
+          "extends": ["plugin:@angular-eslint/template/recommended"],
+          "rules": {}
+      }
+  ]
+}

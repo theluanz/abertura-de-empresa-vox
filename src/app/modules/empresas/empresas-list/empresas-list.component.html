@@ -1,11 +1,33 @@
-<div *ngIf="empresas$ | async as empresas; else carregando">
-  <app-empresa-resume
-    *ngFor="let empresa of empresas"
-    [empresa]="empresa"
-    (clickVisualizarEvent)="onVisualizarEmpresa($event)"
-  ></app-empresa-resume>
-</div>
+<div *ngIf="pedidos$ | async as pedidos; else carregando" class="d-flex h-100">
+  <div style="width: 45%">
+    <app-empresa-resume
+      *ngFor="let pedido of pedidos"
+      [pedido]="pedido"
+      (clickVisualizarEvent)="onVisualizarEmpresa($event)"
+    ></app-empresa-resume>
+  </div>
 
+  <!-- Divisor central: 10% da largura, ícone centralizado vertical e horizontalmente -->
+  <div
+    class="d-flex flex-column align-items-center justify-content-center bg-white"
+    style="width: 10%"
+  >
+    <div
+      class="d-flex flex-column align-items-center justify-content-between h-100 position-relative"
+      style="width: 0.75rem"
+    >
+      <div class="border-start border-4 border-primary w-100" style="flex: 1"></div>
+    </div>
+  </div>
+
+  <div style="width: 45%">
+    <app-empresa-detail
+      *ngIf="selectedPedido as selecionada"
+      [pedido]="selecionada"
+      (editar)="onEditar($event)"
+    ></app-empresa-detail>
+  </div>
+</div>
 <ng-template #carregando>
   <p>Carregando empresas...</p>
 </ng-template>

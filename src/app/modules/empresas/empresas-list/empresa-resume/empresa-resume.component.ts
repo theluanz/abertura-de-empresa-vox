@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Empresa } from '../../../../core/models/empresa.model';
+import { Pedido } from '../../../../core/models/pedido.model';
 
 @Component({
   selector: 'app-empresa-resume',
@@ -8,10 +8,10 @@ import { Empresa } from '../../../../core/models/empresa.model';
   styleUrl: './empresa-resume.component.scss',
 })
 export class EmpresaResumeComponent {
-  @Input() empresa!: Empresa;
-  @Output() clickVisualizarEvent = new EventEmitter<Empresa>();
+  @Input() pedido!: Pedido;
+  @Output() clickVisualizarEvent = new EventEmitter<Pedido>();
 
   onClickVisualizar(): void {
-    this.clickVisualizarEvent.emit(this.empresa);
+    this.clickVisualizarEvent.emit(this.pedido);
   }
 }

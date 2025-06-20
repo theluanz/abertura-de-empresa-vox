@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-between align-items-start mb-3">
+  <h5 class="mb-0 fw-semibold">Detalhes do pedido</h5>
+
+  <button class="btn btn-secondary btn-sm d-flex align-items-center" (click)="onEditar()">
+    <i class="bi bi-people me-1"></i>
+    Editar
+  </button>
+</div>
+
+<div class="d-flex align-items-center mb-4">
+  <div
+    class="rounded-circle bg-secondary bg-opacity-25 d-flex justify-content-center align-items-center me-3"
+    style="width: 56px; height: 56px"
+  >
+    <i class="bi bi-person fs-3 text-secondary"></i>
+  </div>
+  <h4 class="mb-0 fw-semibold">{{ pedido.empresa.ds_nome_fantasia }}</h4>
+</div>
+
+<ul class="list-unstyled lh-lg m-0">
+  <li><strong>Responsável:</strong> {{ pedido.solicitante.ds_responsavel }}</li>
+  <li><strong>CPF:</strong> {{ cpfFormat(pedido.solicitante.nu_cpf) }}</li>
+
+  <li><strong>Endereço:</strong> {{ pedido.empresa.endereco.ds_logradouro }}</li>
+  <li><strong>Bairro:</strong> {{ pedido.empresa.endereco.ds_bairro }}</li>
+  <li><strong>Cidade:</strong> {{ pedido.empresa.endereco.ds_municipio }}</li>
+
+  <li><strong>CEP:</strong> {{ cepFormat(pedido.empresa.endereco.co_cep) }}</li>
+  <li *ngIf="pedido.empresa.endereco.ds_complemento">
+    <strong>Complemento:</strong> {{ pedido.empresa.endereco.ds_complemento }}
+  </li>
+
+  <li><strong>UF:</strong> {{ pedido.empresa.endereco.co_uf }}</li>
+  <li><strong>Número:</strong> {{ pedido.empresa.endereco.co_numero }}</li>
+</ul>

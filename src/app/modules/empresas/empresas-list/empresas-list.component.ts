@@ -1,32 +1,39 @@
 import { Component, inject } from '@angular/core';
 import { HeaderStateService } from '../../../core/services/header-state.service';
-import { Empresa } from '../../../core/models/empresa.model';
-import { EmpresaService } from '../../../core/services/empresa.service';
+import { Pedido } from '../../../core/models/pedido.model';
+import { PedidoService } from '../../../core/services/pedido.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { EmpresaResumeComponent } from './empresa-resume/empresa-resume.component';
+import { EmpresaDetailComponent } from './empresa-detail/empresa-detail.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-empresas-list',
   templateUrl: './empresas-list.component.html',
-  imports: [CommonModule, EmpresaResumeComponent],
+  imports: [CommonModule, EmpresaResumeComponent, EmpresaDetailComponent],
 
   styleUrl: './empresas-list.component.scss',
 })
 export class EmpresasListComponent {
   private header = inject(HeaderStateService);
-  private empresaService = inject(EmpresaService);
+  private pedidosService = inject(PedidoService);
+  private router = inject(Router);
 
-  empresas$: Observable<Empresa[]> = this.empresaService.getEmpresas();
+  pedidos$: Observable<Pedido[]> = this.pedidosService.getPedidos();
 
-  selectedEmpresa: Empresa | null = null;
+  selectedPedido: Pedido | null = null;
 
   constructor() {
     this.header.showActionButton.set(true);
     this.header.title.set('Pedido de Abertura de Empresas');
   }
 
-  onVisualizarEmpresa(empresa: Empresa) {
-    this.selectedEmpresa = empresa;
+  onVisualizarEmpresa(pedido: Pedido) {
+    this.selectedPedido = pedido;
+  }
+
+  onEditar(pedido: Pedido) {
+    this.router.navigate(['/empresas', pedido.id, 'editar']);
   }
 }

@@ -6,4 +6,8 @@ export const routes: Route[] = [
     path: '',
     component: EmpresasListComponent,
   },
+  {
+    path: ':id/editar',
+    component: EmpresasListComponent,
+  },
 ];

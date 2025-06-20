@@ -1,0 +1,28 @@
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Pedido } from '../../../../core/models/pedido.model';
+
+@Component({
+  selector: 'app-empresa-detail',
+  imports: [],
+  templateUrl: './empresa-detail.component.html',
+  styleUrl: './empresa-detail.component.scss',
+})
+export class EmpresaDetailComponent {
+  @Input() pedido!: Pedido;
+
+  @Output() editar = new EventEmitter<Pedido>();
+
+  onEditar(): void {
+    // console.log('Editar pedido:', this.pedido);
+    this.editar.emit(this.pedido);
+  }
+
+  cpfFormat(cpf: string): string {
+    return cpf.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4');
+  }
+
+  cepFormat(cep: number | string): string {
+    const raw = cep.toString().padStart(8, '0');
+    return raw.replace(/^(\d{5})(\d{3})$/, '$1-$2');
+  }
+}

@@ -1,0 +1,19 @@
+.form-container_scss {
+  .form-left_scss {
+    padding-right: 0;
+    border-right: none;
+
+    @media (min-width: 768px) {
+      padding-right: 1.5rem;
+      border-right: 1px solid var(--bs-primary);
+    }
+  }
+
+  .form-right {
+    padding-left: 0;
+
+    @media (min-width: 768px) {
+      padding-left: 1.5rem;
+    }
+  }
+}

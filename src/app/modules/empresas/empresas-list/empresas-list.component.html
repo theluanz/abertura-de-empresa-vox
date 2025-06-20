@@ -1,5 +1,8 @@
-<div *ngIf="pedidos$ | async as pedidos; else carregando" class="d-flex h-100">
-  <div class="col-md-6 pe-md-5 border-end border-primary">
+<div
+  *ngIf="pedidos$ | async as pedidos; else carregando"
+  class="empresas-container_scss row g-0 h-100 flex-column flex-md-row"
+>
+  <div class="col-12 col-md-6 resumo-container_scss">
     <app-empresa-resume
       *ngFor="let pedido of pedidos"
       [pedido]="pedido"
@@ -7,7 +10,7 @@
     ></app-empresa-resume>
   </div>
 
-  <div class="col-md-6 ps-md-5">
+  <div class="col-12 col-md-6 detalhe-container_scss">
     <app-empresa-detail
       *ngIf="selectedPedido as selecionada"
       [pedido]="selecionada"
@@ -15,6 +18,7 @@
     ></app-empresa-detail>
   </div>
 </div>
+
 <ng-template #carregando>
   <p>Carregando empresas...</p>
 </ng-template>

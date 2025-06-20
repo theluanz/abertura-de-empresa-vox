@@ -1,0 +1,19 @@
+.empresas-container_scss {
+  .resumo-container_scss {
+    padding-right: 0;
+    border-right: none;
+
+    @media (min-width: 768px) {
+      padding-right: 1.5rem; // equivalente ao pe-md-5
+      border-right: 1px solid var(--bs-primary);
+    }
+  }
+
+  .detalhe-container_scss {
+    padding-left: 0;
+
+    @media (min-width: 768px) {
+      padding-left: 1.5rem; // equivalente ao ps-md-5
+    }
+  }
+}

@@ -1,6 +1,6 @@
 # Abertura de Empresa Vox
 
-Este repositório contém o código-fonte do projeto **Abertura de Empresa Vox**, uma aplicação desenvolvida para facilitar o processo de abertura de empresas, oferecendo uma interface intuitiva e funcionalidades automatizadas.
+Este repositório contém o código-fonte do projeto **Abertura de Empresa Vox**, uma aplicação desenvolvida para facilitar o processo de abertura de empresas.
 
 ## Tecnologias Utilizadas
 

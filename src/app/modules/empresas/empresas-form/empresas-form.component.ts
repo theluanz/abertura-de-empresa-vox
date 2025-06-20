@@ -9,6 +9,8 @@ import { HeaderStateService } from '../../../core/services/header-state.service'
 import { Estado } from '../../../core/models/estado.model';
 import { IbgeService } from '../../../core/services/ibge.service';
 import { ModalSucessoService } from '../../../core/services/modal-sucesso.service';
+import { cpfValidator } from '../../../core/validators/cpf-validators';
+import { dataNascimentoValidator } from '../../../core/validators/data-nascimento-validator';
 
 @Component({
   selector: 'app-empresas-form',
@@ -36,16 +38,16 @@ export class EmpresasFormComponent implements OnInit {
   form_pedido: FormGroup = this._formBuilder.group({
     solicitante: this._formBuilder.group({
       ds_responsavel: ['', Validators.required],
-      nu_cpf: ['', Validators.required],
-      date_nascimento: ['', [Validators.required]],
+      nu_cpf: ['', [Validators.required, cpfValidator]],
+      date_nascimento: ['', [Validators.required, dataNascimentoValidator]],
     }),
     empresa: this._formBuilder.group({
       ds_nome_fantasia: ['', Validators.required],
-      co_entidade_registro: this._formBuilder.control(null, Validators.required),
+      co_entidade_registro: [null, Validators.required],
       endereco: this._formBuilder.group({
-        co_cep: ['', [Validators.required]],
+        co_cep: ['', Validators.required],
         ds_logradouro: ['', Validators.required],
-        co_numero: [null, Validators.required],
+        co_numero: ['', Validators.required],
         ds_complemento: [''],
         ds_bairro: ['', Validators.required],
         ds_municipio: ['', Validators.required],
@@ -113,6 +115,10 @@ export class EmpresasFormComponent implements OnInit {
   isInvalid(path: string): boolean {
     const control = this.form_pedido.get(path);
     return !!control && control.invalid && (control.dirty || control.touched);
+  }
+  getError(path: string, errorKey: string): boolean {
+    const control = this.form_pedido.get(path);
+    return !!control?.errors?.[errorKey] && (control.dirty || control.touched);
   }
 
   salvar() {

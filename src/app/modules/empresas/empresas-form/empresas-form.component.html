@@ -40,7 +40,17 @@
             formControlName="date_nascimento"
             [ngClass]="{ 'is-invalid': isInvalid('solicitante.date_nascimento') }"
           />
-          <div class="invalid-feedback">Campo obrigatório.</div>
+          <div class="invalid-feedback">
+            <ng-container *ngIf="getError('solicitante.date_nascimento', 'required')">
+              Campo obrigatório.
+            </ng-container>
+            <ng-container *ngIf="getError('solicitante.date_nascimento', 'dataInvalida')">
+              Data inválida.
+            </ng-container>
+            <ng-container *ngIf="getError('solicitante.date_nascimento', 'menorDeIdade')">
+              É necessário ter pelo menos 18 anos.
+            </ng-container>
+          </div>
         </div>
       </div>
 

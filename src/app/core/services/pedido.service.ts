@@ -25,7 +25,7 @@ export class PedidoService {
     return this.http.post<Pedido>(`${this.baseUrl}/empresas`, empresa);
   }
 
-  atualizarPedido(id: number, empresa: Pedido): Observable<Pedido> {
+  atualizarPedido(id: number | string, empresa: Pedido): Observable<Pedido> {
     return this.http.put<Pedido>(`${this.baseUrl}/empresas/${id}`, empresa);
   }
 

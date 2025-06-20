@@ -112,8 +112,25 @@ export class EmpresasFormComponent implements OnInit {
 
   salvar() {
     if (this.form_pedido.valid) {
-      console.log('Formulário válido, dados:', this.form_pedido.value);
-      // implementar ação de salvar
+      if (this._pedidoId) {
+        this._pedidosService.atualizarPedido(this._pedidoId, this.form_pedido.value).subscribe({
+          next: (pedido: Pedido) => {
+            console.log('Pedido atualizado com sucesso:', pedido);
+          },
+          error: (error) => {
+            console.error('Erro ao atualizar o pedido:', error);
+          },
+        });
+      } else {
+        this._pedidosService.salvarPedido(this.form_pedido.value).subscribe({
+          next: (pedido: Pedido) => {
+            console.log('Pedido salvo com sucesso:', pedido);
+          },
+          error: (error) => {
+            console.error('Erro ao salvar o pedido:', error);
+          },
+        });
+      }
     } else {
       this.form_pedido.markAllAsTouched();
     }

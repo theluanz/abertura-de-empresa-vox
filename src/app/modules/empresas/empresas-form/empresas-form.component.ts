@@ -11,10 +11,12 @@ import { IbgeService } from '../../../core/services/ibge.service';
 import { ModalSucessoService } from '../../../core/services/modal-sucesso.service';
 import { cpfValidator } from '../../../core/validators/cpf-validators';
 import { dataNascimentoValidator } from '../../../core/validators/data-nascimento-validator';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-empresas-form',
-  imports: [SharedModule, ReactiveFormsModule],
+  imports: [SharedModule, ReactiveFormsModule, NgxMaskDirective],
+  providers: [provideNgxMask()],
   templateUrl: './empresas-form.component.html',
   styleUrl: './empresas-form.component.scss',
 })

@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '../../shared/shared.module';
+
+import { EmpresasRoutingModule } from './empresas.routes';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, EmpresasRoutingModule],
 })
 export class EmpresasModule {}

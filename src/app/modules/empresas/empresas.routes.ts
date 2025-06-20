@@ -1,18 +1,26 @@
-import { Route } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
 import { EmpresasListComponent } from './empresas-list/empresas-list.component';
 import { EmpresasFormComponent } from './empresas-form/empresas-form.component';
 
-export const routes: Route[] = [
+const routes: Routes = [
   {
     path: '',
     component: EmpresasListComponent,
   },
   {
-    path: ':id/editar',
-    component: EmpresasFormComponent,
-  },
-  {
     path: 'novo',
     component: EmpresasFormComponent,
   },
+  {
+    path: ':id/editar',
+    component: EmpresasFormComponent,
+  },
 ];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class EmpresasRoutingModule {}

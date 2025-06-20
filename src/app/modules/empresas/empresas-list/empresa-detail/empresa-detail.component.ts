@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Pedido } from '../../../../core/models/pedido.model';
 import { SharedModule } from '../../../../shared/shared.module';
+import { CpfPipe } from '../../../../core/pipe/cpf.pipe';
+import { CepPipe } from '../../../../core/pipe/cep.pipe';
 
 @Component({
   selector: 'app-empresa-detail',
-  imports: [SharedModule],
+  imports: [SharedModule, CepPipe, CpfPipe],
   templateUrl: './empresa-detail.component.html',
   styleUrl: './empresa-detail.component.scss',
 })

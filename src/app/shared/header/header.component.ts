@@ -2,13 +2,13 @@
 import { Component, inject } from '@angular/core';
 import { HeaderStateService } from '../../core/services/header-state.service';
 import { SharedModule } from '../shared.module';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
 
   standalone: true,
-  imports: [SharedModule],
+  imports: [SharedModule, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

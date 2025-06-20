@@ -37,12 +37,6 @@ npm i
 ng serve
 ```
 
-4. Inicie a aplicação:
-
-```bash
-ng serve
-```
-
 5. Inicie o json server:
 
 ```bash
@@ -51,7 +45,7 @@ npm run mock
 
 Pronto, acesse http://localhost:4200/ e estará rodando.
 
-## ✅ O que foi feito
+## O que foi feito
 
 - Estruturação do projeto com boas práticas de organização.
 - Integração com a API.
@@ -66,3 +60,4 @@ Pronto, acesse http://localhost:4200/ e estará rodando.
 - Algumas funcionalidades podem ser utilizadas em outras partes do projeto e precisam de adaptação para isso (passar a função e os texto para o header, modal de sucesso pode virar um modal de confirmação de erro, etc).
 - Adicionar testes
 - Melhorias visuais
+- Tratar erros de respostas da API (usando interceptors, por exemplo)

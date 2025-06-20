@@ -1,1 +1,11 @@
-<p>empresas-list works!</p>
+<div *ngIf="empresas$ | async as empresas; else carregando">
+  <app-empresa-resume
+    *ngFor="let empresa of empresas"
+    [empresa]="empresa"
+    (clickVisualizarEvent)="onVisualizarEmpresa($event)"
+  ></app-empresa-resume>
+</div>
+
+<ng-template #carregando>
+  <p>Carregando empresas...</p>
+</ng-template>

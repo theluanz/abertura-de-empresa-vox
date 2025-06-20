@@ -1,0 +1,19 @@
+<header class="header_scss">
+  <div class="container-xl d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center gap-3">
+      <div class="divLogo_scss d-flex align-items-center justify-content-center rounded-circle">
+        <img src="assets/logo.png" alt="Logo" class="logo_scss" />
+      </div>
+      <h1 class="h3 text-primary mb-0 fw-bold">{{ header.title() }}</h1>
+    </div>
+
+    <button
+      *ngIf="header.showActionButton()"
+      class="btn btn-primary d-flex align-items-center gap-2"
+      (click)="goToNovoPedido()"
+    >
+      <i class="bi bi-plus-circle"></i>
+      Solicitar Abertura
+    </button>
+  </div>
+</header>

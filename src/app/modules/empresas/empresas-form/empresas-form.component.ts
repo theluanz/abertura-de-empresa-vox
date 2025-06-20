@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PedidoService } from '../../../core/services/pedido.service';
 import { Pedido } from '../../../core/models/pedido.model';
 import { SharedModule } from '../../../shared/shared.module';
@@ -8,6 +8,7 @@ import { EntidadeRegistro } from '../../../core/models/entidade-registro.model';
 import { HeaderStateService } from '../../../core/services/header-state.service';
 import { Estado } from '../../../core/models/estado.model';
 import { IbgeService } from '../../../core/services/ibge.service';
+import { ModalSucessoService } from '../../../core/services/modal-sucesso.service';
 
 @Component({
   selector: 'app-empresas-form',
@@ -22,7 +23,10 @@ export class EmpresasFormComponent implements OnInit {
   private header = inject(HeaderStateService);
 
   private _activatedRoute = inject(ActivatedRoute);
+  private _router = inject(Router);
   private _pedidoId: string | null = this._activatedRoute.snapshot.paramMap.get('id');
+
+  private modalSucesso: ModalSucessoService = inject(ModalSucessoService);
 
   pedido: Pedido | null = null;
   estados: Estado[] = [];
@@ -101,6 +105,7 @@ export class EmpresasFormComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error fetching pedido:', error);
+          this._router.navigate(['/empresas']);
         },
       });
     }
@@ -115,7 +120,9 @@ export class EmpresasFormComponent implements OnInit {
       if (this._pedidoId) {
         this._pedidosService.atualizarPedido(this._pedidoId, this.form_pedido.value).subscribe({
           next: (pedido: Pedido) => {
-            console.log('Pedido atualizado com sucesso:', pedido);
+            this.modalSucesso.open().afterClose(() => {
+              this._router.navigate(['/empresas']);
+            });
           },
           error: (error) => {
             console.error('Erro ao atualizar o pedido:', error);
@@ -124,7 +131,9 @@ export class EmpresasFormComponent implements OnInit {
       } else {
         this._pedidosService.salvarPedido(this.form_pedido.value).subscribe({
           next: (pedido: Pedido) => {
-            console.log('Pedido salvo com sucesso:', pedido);
+            this.modalSucesso.open().afterClose(() => {
+              this._router.navigate(['/empresas']);
+            });
           },
           error: (error) => {
             console.error('Erro ao salvar o pedido:', error);

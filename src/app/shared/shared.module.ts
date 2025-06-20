@@ -16,6 +16,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     CollapseModule.forRoot(),
     TooltipModule.forRoot(),
   ],
+
   exports: [CommonModule, AlertModule, ModalModule, ButtonsModule, CollapseModule, TooltipModule],
 })
 export class SharedModule {}

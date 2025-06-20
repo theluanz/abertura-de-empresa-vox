@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Pedido } from '../../../../core/models/pedido.model';
+import { SharedModule } from '../../../../shared/shared.module';
 
 @Component({
   selector: 'app-empresa-detail',
-  imports: [],
+  imports: [SharedModule],
   templateUrl: './empresa-detail.component.html',
   styleUrl: './empresa-detail.component.scss',
 })

@@ -26,7 +26,16 @@
             mask="000.000.000-00"
             [ngClass]="{ 'is-invalid': isInvalid('solicitante.nu_cpf') }"
           />
-          <div class="invalid-feedback">Campo obrigatório.</div>
+          <div class="invalid-feedback">
+            <ng-container *ngIf="getError('solicitante.nu_cpf', 'required'); else checkCpfInvalido">
+              Campo obrigatório.
+            </ng-container>
+            <ng-template #checkCpfInvalido>
+              <ng-container *ngIf="getError('solicitante.nu_cpf', 'cpfInvalido')">
+                CPF inválido.
+              </ng-container>
+            </ng-template>
+          </div>
         </div>
 
         <div class="mb-5" style="max-width: 250px">
@@ -41,15 +50,25 @@
             [ngClass]="{ 'is-invalid': isInvalid('solicitante.date_nascimento') }"
           />
           <div class="invalid-feedback">
-            <ng-container *ngIf="getError('solicitante.date_nascimento', 'required')">
+            <ng-container
+              *ngIf="getError('solicitante.date_nascimento', 'required'); else checkDataInvalida"
+            >
               Campo obrigatório.
             </ng-container>
-            <ng-container *ngIf="getError('solicitante.date_nascimento', 'dataInvalida')">
-              Data inválida.
-            </ng-container>
-            <ng-container *ngIf="getError('solicitante.date_nascimento', 'menorDeIdade')">
-              É necessário ter pelo menos 18 anos.
-            </ng-container>
+
+            <ng-template #checkDataInvalida>
+              <ng-container
+                *ngIf="getError('solicitante.date_nascimento', 'dataInvalida'); else checkIdade"
+              >
+                Data inválida.
+              </ng-container>
+            </ng-template>
+
+            <ng-template #checkIdade>
+              <ng-container *ngIf="getError('solicitante.date_nascimento', 'menorDeIdade')">
+                É necessário ter pelo menos 18 anos.
+              </ng-container>
+            </ng-template>
           </div>
         </div>
       </div>

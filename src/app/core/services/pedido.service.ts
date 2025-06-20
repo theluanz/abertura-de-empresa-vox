@@ -17,7 +17,7 @@ export class PedidoService {
     return this.http.get<Pedido[]>(`${this.baseUrl}/empresas`);
   }
 
-  getPedidoById(id: number): Observable<Pedido> {
+  getPedidoById(id: number | string): Observable<Pedido> {
     return this.http.get<Pedido>(`${this.baseUrl}/empresas/${id}`);
   }
 

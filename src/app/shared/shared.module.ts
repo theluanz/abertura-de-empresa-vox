@@ -10,7 +10,6 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 @NgModule({
   imports: [
     CommonModule,
-
     AlertModule.forRoot(),
     ModalModule.forRoot(),
     ButtonsModule.forRoot(),

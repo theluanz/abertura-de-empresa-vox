@@ -6,6 +6,7 @@ export function dataNascimentoValidator(control: AbstractControl): ValidationErr
   if (!value) return null;
 
   const partes = value.split('/');
+  console.log('Partes da data:', partes);
   if (partes.length !== 3) return { dataInvalida: true };
 
   const [dia, mes, ano] = partes.map(Number);

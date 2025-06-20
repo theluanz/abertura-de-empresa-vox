@@ -46,6 +46,7 @@
             class="form-control"
             placeholder="DD/MM/AAAA"
             mask="00/00/0000"
+            [dropSpecialCharacters]="false"
             formControlName="date_nascimento"
             [ngClass]="{ 'is-invalid': isInvalid('solicitante.date_nascimento') }"
           />

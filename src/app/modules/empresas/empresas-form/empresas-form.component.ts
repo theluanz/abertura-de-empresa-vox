@@ -12,6 +12,7 @@ import { ModalSucessoService } from '../../../core/services/modal-sucesso.servic
 import { cpfValidator } from '../../../core/validators/cpf-validators';
 import { dataNascimentoValidator } from '../../../core/validators/data-nascimento-validator';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { formatarDataBR } from '../../../core/utils/formatar-data-para-brasil';
 
 @Component({
   selector: 'app-empresas-form',
@@ -86,11 +87,12 @@ export class EmpresasFormComponent implements OnInit {
       this._pedidosService.getPedidoById(this._pedidoId).subscribe({
         next: (pedido: Pedido) => {
           this.pedido = pedido;
+
           this.form_pedido.patchValue({
             solicitante: {
               ds_responsavel: pedido.solicitante.ds_responsavel,
               nu_cpf: pedido.solicitante.nu_cpf,
-              date_nascimento: pedido.solicitante.date_nascimento,
+              date_nascimento: formatarDataBR(pedido.solicitante.date_nascimento),
             },
             empresa: {
               ds_nome_fantasia: pedido.empresa.ds_nome_fantasia,

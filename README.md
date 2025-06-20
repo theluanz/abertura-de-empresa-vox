@@ -1,59 +1,68 @@
-# VoxEmpresas
+# Abertura de Empresa Vox
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+Este repositório contém o código-fonte do projeto **Abertura de Empresa Vox**, uma aplicação desenvolvida para facilitar o processo de abertura de empresas, oferecendo uma interface intuitiva e funcionalidades automatizadas.
 
-## Development server
+## Tecnologias Utilizadas
 
-To start a local development server, run:
+- **Angular 19**
+- **RxJS**
+- **Typescript**
+- **Bootstrap CSS**
+- **Ngx-Bootstrap**
+- **JSON Server**
+
+## Como Executar o Projeto
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/theluanz/abertura-de-empresa-vox.git
+```
+
+2. Acesse o diretório do projeto:
+
+```bash
+cd abertura-de-empresa-vox
+```
+
+3. Instale as dependências:
+
+```bash
+npm i
+```
+
+4. Inicie a aplicação:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+4. Inicie a aplicação:
 
 ```bash
-ng generate component component-name
+ng serve
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+5. Inicie o json server:
 
 ```bash
-ng generate --help
+npm run mock
 ```
 
-## Building
+Pronto, acesse http://localhost:4200/ e estará rodando.
 
-To build the project run:
+## ✅ O que foi feito
 
-```bash
-ng build
-```
+- Estruturação do projeto com boas práticas de organização.
+- Integração com a API.
+- Validações nos formulários.
+- Feedbacks visuais ao usuário (mensagens de sucesso, erros, campos inválidos).
+- Uso de Signals para controle de estado de botões e interface.
+- Uso de pipes.
+- Uso de reactividade e RxJS.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## O que pode melhorar
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Algumas funcionalidades podem ser utilizadas em outras partes do projeto e precisam de adaptação para isso (passar a função e os texto para o header, modal de sucesso pode virar um modal de confirmação de erro, etc).
+- Adicionar testes
+- Melhorias visuais

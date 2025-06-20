@@ -154,6 +154,20 @@
             />
             <div class="invalid-feedback">Campo obrigatório.</div>
           </div>
+
+          <div class="mb-3">
+            <label for="co_uf" class="form-label">Estado*</label>
+            <select
+              id="co_uf"
+              class="form-select"
+              formControlName="co_uf"
+              [ngClass]="{ 'is-invalid': isInvalid('empresa.endereco.co_uf') }"
+            >
+              <option value="" disabled>Selecione o estado</option>
+              <option *ngFor="let estado of estados" [value]="estado.id">{{ estado.nome }}</option>
+            </select>
+            <div class="invalid-feedback">Campo obrigatório.</div>
+          </div>
         </div>
 
         <div class="d-flex justify-content-end mt-4">

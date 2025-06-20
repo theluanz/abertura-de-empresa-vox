@@ -6,6 +6,8 @@ import { Pedido } from '../../../core/models/pedido.model';
 import { SharedModule } from '../../../shared/shared.module';
 import { EntidadeRegistro } from '../../../core/models/entidade-registro.model';
 import { HeaderStateService } from '../../../core/services/header-state.service';
+import { Estado } from '../../../core/models/estado.model';
+import { IbgeService } from '../../../core/services/ibge.service';
 
 @Component({
   selector: 'app-empresas-form',
@@ -15,6 +17,7 @@ import { HeaderStateService } from '../../../core/services/header-state.service'
 })
 export class EmpresasFormComponent implements OnInit {
   private _pedidosService: PedidoService = inject(PedidoService);
+  private _ibgeService = inject(IbgeService);
   private _formBuilder = inject(FormBuilder);
   private header = inject(HeaderStateService);
 
@@ -22,6 +25,7 @@ export class EmpresasFormComponent implements OnInit {
   private _pedidoId: string | null = this._activatedRoute.snapshot.paramMap.get('id');
 
   pedido: Pedido | null = null;
+  estados: Estado[] = [];
 
   entidades_registro: EntidadeRegistro[] = [];
 
@@ -49,12 +53,22 @@ export class EmpresasFormComponent implements OnInit {
   ngOnInit(): void {
     this.header.title.set('Solicitar Abertura de Empresa');
     this.header.showActionButton.set(false);
+
     this._pedidosService.getEntidadesRegistro().subscribe({
       next: (entidades: EntidadeRegistro[]) => {
         this.entidades_registro = entidades;
       },
       error: (error) => {
         console.error('Error fetching entidades registro:', error);
+      },
+    });
+
+    this._ibgeService.getEstados().subscribe({
+      next: (estados: Estado[]) => {
+        this.estados = estados;
+      },
+      error: (error) => {
+        console.error('Error fetching estados:', error);
       },
     });
 
